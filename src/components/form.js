@@ -1,4 +1,5 @@
 import React from 'react';
+import './todo.css';
 
 const Form = ({ setInputText, todos, setTodos, inputText }) => {
     const inputTextHandler = (e) => {
