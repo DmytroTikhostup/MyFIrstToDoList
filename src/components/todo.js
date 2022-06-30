@@ -39,10 +39,6 @@ const Todo = ({ text, todo, todos, setTodos, setEditText, editText }) => {
         );
     };
 
-    const changeTextHandler = (e) => {
-        setEditText(e.target.value);
-    };
-
     return (
         <div>
             <li className={`listTextString ${todo.completed ? 'completed' : ''}`}>{text}</li>
