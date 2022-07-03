@@ -20,12 +20,12 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
             .then((getTodos) => {
                 setTodos([
                     ...todos,
-                    ...getTodos.map((item) => {
+                    ...getTodos.map((el) => {
                         return {
-                            ...item,
-                            text: item.text,
+                            ...el,
+                            text: el.text,
                             id: Math.random() * 1000,
-                            completed: item.isCompleted,
+                            completed: el.isCompleted,
                             edit: false,
                             disableButtons: false,
                         };
@@ -37,7 +37,6 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
     return (
         <form>
             <input value={inputText} onChange={inputTextHandler} type="text" />
-            {/* <input className={!compliteOn ? 'complete' : ''} type="text" disabled={redactOn} defaultValue={text} onChange={redactItemTaskHandler} /> */}
             <button onClick={submitTodoHandler} type="submit">
                 ADD
             </button>
