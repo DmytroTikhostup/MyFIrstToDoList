@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import Form from './form';
+import Counter from './counter';
 import './todo.css';
 
-const Todo = ({ text, todo, todos, setTodos, editText, setEditText }) => {
+const Todo = ({ text, todo, todos, setTodos, editText, setEditText, setCreatedCount, createdCount, setDeletedCount, deletedCount }) => {
     // function --- Delete Task
 
     const [isEdit, setIsEdit] = useState(false);
@@ -10,11 +10,13 @@ const Todo = ({ text, todo, todos, setTodos, editText, setEditText }) => {
 
     const deleteHandler = () => {
         setTodos(todos.filter((el) => el.id !== todo.id));
+        setDeletedCount(deletedCount++);
     };
 
     // function --- Done Task
 
     const completeHandler = () => {
+        setCreatedCount(createdCount++);
         setTodos(
             todos.map((el) => {
                 if (el.id === todo.id) {
@@ -30,8 +32,8 @@ const Todo = ({ text, todo, todos, setTodos, editText, setEditText }) => {
     const changeHandler = (event) => {
         const value = event.currentTarget.value;
 
-        console.log(event.key);
-        console.log(event.code);
+        // console.log(event.key);
+        // console.log(event.code);
         // https://developer.mozilla.org/en-US/docs/Web/API/KeyboardEvent/code
 
         setTodoText(value);
@@ -44,6 +46,7 @@ const Todo = ({ text, todo, todos, setTodos, editText, setEditText }) => {
     const saveHandler = (event) => {
         const value = event.currentTarget.value;
 
+        setEditCount(editedCount++);
         setIsEdit(false);
         setTodos(
             todos.map((el) => {

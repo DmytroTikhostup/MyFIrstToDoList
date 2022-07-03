@@ -38,7 +38,7 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
         <form>
             <input value={inputText} onChange={inputTextHandler} type="text" />
             <button onClick={submitTodoHandler} type="submit">
-                ADD
+                Add task
             </button>
             <button className={'serverbutton'} onClick={FetchTodos}>
                 Download List on server
