@@ -8,52 +8,48 @@ import Counter from './components/counter';
 function App() {
     const [inputText, setInputText] = useState('');
     const [todos, setTodos] = useState([]);
-    // const [editText, setEditText] = useState('');
+    const [counters, setCounters] = useState({
+        createdCounter: 0,
+        editedCounter: 0,
+        deletedCounter: 0,
+    });
 
     useEffect(() => {
         savelocalStorage();
     });
 
-    // create counters --------
-    // const [createdCount, setCreatedCount] = useState(createdCount);
-    // const [editedCount, setUpdatedCount] = useState(editedCount);
-    // const [deletedCount, setDeletedCount] = useState(deletedCount);
-    // useEffect(() => {
-    //     getLocalTodos(
-    //         JSON.stringify({
-    //             created: createdCount,
-    //             edited: editedCount,
-    //             deleted: deletedCount,
-    //         })
-    //     );
-    // }, [createdCount, editedCount, deletedCount]);
+    useEffect(() => {
+        getLocalStorage();
+    }, []);
 
     const savelocalStorage = () => {
         localStorage.setItem('todos', JSON.stringify(todos));
+        localStorage.setItem('counters', JSON.stringify(counters));
     };
 
-    // const getLocalTodos = () => {
-    //     if (localStorage.getItem('todos') === null) {
-    //         return localStorage.setItem('todos', JSON.stringify([]));
-    //     } else {
-    //         let todoLocal = JSON.parse(localStorage.getItem('todos'));
-    //         setTodos(todoLocal);
-    //     }
-    //     return {
-    //         createdCount: 0,
-    //         editedCount: 0,
-    //         deletedCount: 0,
-    //     };
-    // };
+    const getLocalStorage = () => {
+        if (localStorage.getItem('todos') === null) {
+            localStorage.setItem('todos', JSON.stringify([]));
+        } else {
+            let localTodo = JSON.parse(localStorage.getItem('todos'));
+            setTodos(localTodo);
+        }
+        if (localStorage.getItem('counters') === null) {
+            localStorage.setItem('counters', JSON.stringify([]));
+        } else {
+            let localCounter = JSON.parse(localStorage.getItem('counters'));
+            setCounters(localCounter);
+        }
+    };
 
     return (
         <div className="App">
             <header>
                 <h1 className="App-header">My first ToDo List on React </h1>
-                <Counter />
+                <Counter counters={counters} setCounters={setCounters} />
             </header>
-            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} />
-            <List setTodos={setTodos} todos={todos} />
+            <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} setCounters={setCounters} />
+            <List setTodos={setTodos} todos={todos} counters={counters} setCounters={setCounters} />
         </div>
     );
 }

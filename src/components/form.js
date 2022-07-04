@@ -1,7 +1,7 @@
 import React from 'react';
 import './todo.css';
 
-const Form = ({ setInputText, todos, setTodos, inputText }) => {
+const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters, inputURL }) => {
     const inputTextHandler = (e) => {
         // console.log(e.target.value);
         setInputText(e.target.value);
@@ -11,11 +11,15 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
         e.preventDefault();
         setInputText('');
         setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000 }]);
+        setCounters({ createdCounter: counters.createdCounter++, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter });
     };
 
     const FetchTodos = (e) => {
         e.preventDefault();
         fetch('https://gist.githubusercontent.com/alexandrtovmach/0c8a29b734075864727228c559fe9f96/raw/c4e4133c9658af4c4b3474475273b23b4a70b4af/todo-task.json')
+            // let fetchURL = inputURL;
+            // console.log(fetchURL);
+            // fetch(fetchURL)
             .then((response) => response.json())
             .then((getTodos) => {
                 setTodos([
@@ -38,10 +42,11 @@ const Form = ({ setInputText, todos, setTodos, inputText }) => {
         <form>
             <input value={inputText} onChange={inputTextHandler} type="text" />
             <button onClick={submitTodoHandler} type="submit">
-                Add task
+                Add
             </button>
+            {/* <input value={inputURL} type="text" /> */}
             <button className={'serverbutton'} onClick={FetchTodos}>
-                Download List on server
+                Download on URL
             </button>
         </form>
     );
