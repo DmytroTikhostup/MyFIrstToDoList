@@ -10,7 +10,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
 
     const deleteHandler = () => {
         setTodos(todos.filter((el) => el.id !== todo.id));
-        setCounters({ createdCounter: counters.createdCounter, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter++ });
+        setCounters({ createdCounter: counters.createdCounter, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter + 1 });
     };
 
     // function --- Done Task
@@ -40,7 +40,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     const saveHandler = (event) => {
         const value = event.currentTarget.value;
 
-        setCounters({ createdCounter: counters.createdCounter, editedCounter: counters.editedCounter++, deletedCounter: counters.deletedCounter });
+        setCounters({ createdCounter: counters.createdCounter, editedCounter: counters.editedCounter + 1, deletedCounter: counters.deletedCounter });
         setIsEdit(false);
         setTodos(
             todos.map((el) => {

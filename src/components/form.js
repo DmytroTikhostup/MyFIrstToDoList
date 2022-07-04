@@ -11,7 +11,7 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
         e.preventDefault();
         setInputText('');
         setTodos([...todos, { text: inputText, completed: false, id: Math.random() * 1000 }]);
-        setCounters({ createdCounter: counters.createdCounter++, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter });
+        setCounters({ createdCounter: counters.createdCounter + 1, editedCounter: counters.editedCounter, deletedCounter: counters.deletedCounter });
     };
 
     const FetchTodos = (e) => {

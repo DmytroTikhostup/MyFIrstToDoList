@@ -14,18 +14,18 @@ function App() {
         deletedCounter: 0,
     });
 
-    useEffect(() => {
-        savelocalStorage();
-    });
-
-    useEffect(() => {
-        getLocalStorage();
-    }, []);
-
     const savelocalStorage = () => {
         localStorage.setItem('todos', JSON.stringify(todos));
         localStorage.setItem('counters', JSON.stringify(counters));
     };
+
+    useEffect(() => {
+        savelocalStorage();
+    }, [todos, counters]);
+
+    useEffect(() => {
+        getLocalStorage();
+    }, []);
 
     const getLocalStorage = () => {
         if (localStorage.getItem('todos') === null) {
