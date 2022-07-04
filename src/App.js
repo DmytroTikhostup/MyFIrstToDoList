@@ -46,7 +46,7 @@ function App() {
         <div className="App">
             <header>
                 <h1 className="App-header">My first ToDo List on React </h1>
-                <Counter counters={counters} setCounters={setCounters} />
+                <Counter className="Counter-section" counters={counters} setCounters={setCounters} />
             </header>
             <Form inputText={inputText} todos={todos} setTodos={setTodos} setInputText={setInputText} counters={counters} setCounters={setCounters} />
             <List setTodos={setTodos} todos={todos} counters={counters} setCounters={setCounters} />
