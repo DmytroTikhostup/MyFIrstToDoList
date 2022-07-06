@@ -60,7 +60,7 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
         <div>
             <li className={'listTextString'}>
                 {isEdit ? (
-                    <textarea type="text" value={todoText} onChange={changeHandler} onBlur={saveHandler} />
+                    <input type="text" value={todoText} onChange={changeHandler} onBlur={saveHandler} />
                 ) : (
                     <span className={`${todo.completed ? 'completed' : ''}`}>{todoText}</span>
                 )}
