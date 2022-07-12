@@ -1,11 +1,19 @@
 import React from 'react';
 import Todo from './todo';
-import './todo.css';
+import './todo.scss';
+import styled from 'styled-components';
+
+const wrapperStyledOl = styled.ol`
+    width: auto;
+    font-size: 16px;
+    margin: 0 20% 0 20%;
+    text-align: left;
+`;
 
 const List = ({ todos, setTodos, setEditText, counters, setCounters }) => {
     return (
         <div>
-            <ol>
+            <wrapperStyledOl>
                 {todos.map((todo) => (
                     <Todo
                         key={todo.id}
@@ -18,7 +26,7 @@ const List = ({ todos, setTodos, setEditText, counters, setCounters }) => {
                         setCounters={setCounters}
                     />
                 ))}
-            </ol>
+            </wrapperStyledOl>
         </div>
     );
 };

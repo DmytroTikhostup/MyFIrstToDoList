@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
+import './App.scss';
 
 import Form from './components/form';
 import List from './components/list';
 import Counter from './components/counter';
+import styled from 'styled-components';
 
 function App() {
     const [inputText, setInputText] = useState('');

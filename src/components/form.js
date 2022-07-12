@@ -1,5 +1,34 @@
 import React from 'react';
-import './todo.css';
+import './todo.scss';
+import styled from 'styled-components';
+
+const InputStyled = styled.input`
+    border: 3px green solid;
+    width: 50%;
+`;
+
+const ButtonStyled = styled.button`
+    border: 0;
+    outline: 0;
+    padding: 2px 5px 2px 5px;
+    margin-right: 5px;
+    background: rgb(113, 240, 213);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 60px;
+    text-transform: uppercase;
+`;
+
+const ServerButton = styled.button`
+    border: 0;
+    outline: 0;
+    padding: 2px 5px 2px 5px;
+    margin-right: 5px;
+    background: rgba(255, 170, 22, 0.674);
+    border-radius: 5px;
+    cursor: pointer;
+    width: auto;
+`;
 
 const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters, inputURL }) => {
     const inputTextHandler = (e) => {
@@ -40,14 +69,14 @@ const Form = ({ setInputText, todos, setTodos, inputText, counters, setCounters,
 
     return (
         <form>
-            <input value={inputText} onChange={inputTextHandler} type="text" />
-            <button onClick={submitTodoHandler} type="submit">
+            <InputStyled value={inputText} onChange={inputTextHandler} type="text" placeholder="write your task here and do this)"></InputStyled>
+            <ButtonStyled onClick={submitTodoHandler} type="submit">
                 Add
-            </button>
+            </ButtonStyled>
             {/* <input value={inputURL} type="text" /> */}
-            <button className={'serverbutton'} onClick={FetchTodos}>
+            <ServerButton className={'serverbutton'} onClick={FetchTodos}>
                 Download on URL
-            </button>
+            </ServerButton>
         </form>
     );
 };

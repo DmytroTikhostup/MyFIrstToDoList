@@ -1,6 +1,18 @@
 import React, { useState } from 'react';
-import Counter from './counter';
-import './todo.css';
+import './todo.scss';
+import styled from 'styled-components';
+
+const ButtonListStyled = styled.button`
+    border: 0;
+    outline: 0;
+    padding: 2px 5px 2px 5px;
+    margin-right: 5px;
+    background: rgb(113, 240, 213);
+    border-radius: 5px;
+    cursor: pointer;
+    width: 60px;
+    text-transform: uppercase;
+`;
 
 const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
     // function --- Delete Task
@@ -65,9 +77,9 @@ const Todo = ({ text, todo, todos, setTodos, counters, setCounters }) => {
                     <span className={`${todo.completed ? 'completed' : ''}`}>{todoText}</span>
                 )}
             </li>
-            <button onClick={completeHandler}>Done!</button>
-            <button onClick={editHandler}>Edit</button>
-            <button onClick={deleteHandler}>Delete</button>
+            <ButtonListStyled onClick={completeHandler}>Done!</ButtonListStyled>
+            <ButtonListStyled onClick={editHandler}>Edit</ButtonListStyled>
+            <ButtonListStyled onClick={deleteHandler}>Delete</ButtonListStyled>
         </div>
     );
 };
